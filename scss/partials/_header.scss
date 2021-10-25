@@ -1,0 +1,61 @@
+header {
+  @include flex-center;
+  min-height: 7rem;
+  // NAV ITEM
+  nav {
+    display: none;
+  }
+
+  nav.show-nav {
+    display: block;
+    position: fixed;
+    height: 100vh;
+    inset: 0;
+    width: 70%;
+    background: $White;
+
+    ul {
+      margin-top: 10rem;
+      padding-left: 2rem;
+
+      li {
+        margin-bottom: 2rem;
+      }
+
+      a {
+        color: $Black;
+        font-weight: 700;
+      }
+    }
+  }
+
+  // HAMBURGER MENU
+  .hamburger {
+    cursor: pointer;
+    margin-right: 1.5rem;
+    z-index: 10;
+
+    img {
+      display: none;
+    }
+    // TOOGLE TO SHOW OR CLOSE THE NAV MENU
+    .show-nav {
+      display: block;
+    }
+  }
+
+  // PROFILE IMAGE AND THE CART CONTAINER
+  .user_profile {
+    margin-left: auto;
+    @include flex-center;
+
+    img {
+      cursor: pointer;
+    }
+    .profile-img {
+      height: 3rem;
+      width: 3rem;
+      margin-left: 1rem;
+    }
+  }
+}

@@ -1,0 +1,117 @@
+.product {
+  .image__wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 100%);
+  }
+
+  .prev__next__btn {
+    .prev,
+    .next {
+      position: absolute;
+      border: 1px solid white;
+      padding: 1.2rem 1.5rem;
+      border-radius: 100%;
+      background-color: $White;
+      margin: 0 2rem;
+      top: 45%;
+    }
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  }
+
+  &__image__thumbnail {
+    display: none;
+  }
+
+  // PRODUCT INFORMATION OR PRODUCT DETAILS
+
+  &__details {
+    margin: 2.5rem 0;
+    padding-bottom: 5rem;
+
+    // COMPANY NAME
+    h2 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.2rem;
+      color: $Orange;
+    }
+
+    // PRODUCT NAME
+    h1 {
+      margin-bottom: 1.5rem;
+      font-size: 3rem;
+      width: 90%;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .product__price {
+      @include flex-center;
+      margin-bottom: 1.5rem;
+
+      span,
+      strong {
+        display: block;
+        font-weight: 700;
+      }
+      strong {
+        margin-right: 2rem;
+        font-size: 3rem;
+      }
+
+      .discount__percent {
+        background: $Pale-orange;
+        padding: 0.2rem 1rem;
+        border-radius: 0.5rem;
+        color: $Orange;
+      }
+      .normal__price {
+        margin-left: auto;
+        color: $Black;
+      }
+    }
+
+    // THE PLUS AND MINUS BUTTON TO INCREASE OR DECREASE PRODUCT QUANTITY
+
+    .product__quantity {
+      @include flex-center;
+
+      button {
+        flex: 1;
+        border: none;
+        background: $Light-grayish-blue;
+        font-weight: 700;
+        font-size: 1.8rem;
+        padding: 1.5rem 0;
+      }
+
+      button:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      button:first-child,
+      button:last-child {
+        cursor: pointer;
+      }
+
+      button:first-child,
+      button:nth-child(2) {
+        border-right: none;
+      }
+      button:nth-child(2),
+      button:last-child {
+        border-left: none;
+      }
+    }
+  }
+}
