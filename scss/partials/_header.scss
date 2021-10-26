@@ -13,6 +13,7 @@ header {
     inset: 0;
     width: 70%;
     background: $White;
+    z-index: 5;
 
     ul {
       margin-top: 10rem;
@@ -56,6 +57,31 @@ header {
       height: 3rem;
       width: 3rem;
       margin-left: 2rem;
+    }
+  }
+}
+
+// MEDIA QUERY FOR HEADER
+@media screen and (min-width: 1024px) {
+  header {
+    border-bottom: 1px solid $Black;
+    margin-bottom: 5rem;
+    nav {
+      @include flex-center;
+      ul {
+        @include flex-center;
+      }
+
+      li {
+        margin-left: 2rem;
+
+        a {
+          color: $Black;
+        }
+      }
+    }
+    .hamburger {
+      display: none;
     }
   }
 }

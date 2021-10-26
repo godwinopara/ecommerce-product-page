@@ -1,8 +1,13 @@
 .product {
+  // PRODUCT IMAGES
   .image__wrapper {
     position: relative;
     display: grid;
     grid-template-columns: repeat(4, 100%);
+  }
+
+  .move-right {
+    transform: translateX(-100%);
   }
 
   .prev__next__btn {
@@ -15,6 +20,7 @@
       background-color: $White;
       margin: 0 2rem;
       top: 45%;
+      cursor: pointer;
     }
     .prev {
       left: 0;
