@@ -65,11 +65,13 @@ header {
 @media screen and (min-width: 1024px) {
   header {
     border-bottom: 1px solid $Black;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
+    min-height: 8rem;
     nav {
       @include flex-center;
       ul {
         @include flex-center;
+        align-items: flex-start;
       }
 
       li {

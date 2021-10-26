@@ -63,7 +63,11 @@
         <div class="product__images">
           <div class="product__image__wrapper">
             <div class="image__wrapper">
-              <img src="/images/image-product-1.jpg" alt="" />
+              <img
+                class="show-image"
+                src="/images/image-product-1.jpg"
+                alt=""
+              />
               <img src="/images/image-product-2.jpg" alt="" />
               <img src="/images/image-product-3.jpg" alt="" />
               <img src="/images/image-product-4.jpg" alt="" />
@@ -95,15 +99,16 @@
             <span class="discount__percent">50%</span>
             <span class="normal__price"><del>$250.00</del></span>
           </div>
-
-          <div class="product__quantity">
-            <button><img src="/images/icon-minus.svg" alt="" /></button>
-            <button>0</button>
-            <button><img src="/images/icon-plus.svg" alt="" /></button>
+          <div class="cart">
+            <div class="product__quantity">
+              <button><img src="/images/icon-minus.svg" alt="" /></button>
+              <button>0</button>
+              <button><img src="/images/icon-plus.svg" alt="" /></button>
+            </div>
+            <button class="btn__add__to__cart">
+              <span class="cart_img"></span>Add to cart
+            </button>
           </div>
-          <button class="btn__add__to__cart">
-            <span class="cart_img"></span>Add to cart
-          </button>
         </div>
       </section>
     </main>
