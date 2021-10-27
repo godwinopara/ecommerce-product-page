@@ -20,6 +20,9 @@ hamburgerCloseIcon.addEventListener("click", () => {
 // IMAGE SLIDER
 
 const productImages = document.querySelectorAll(".image__wrapper img");
+const thumbnailImages = document.querySelectorAll(
+  ".product__image__thumbnail img"
+);
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 

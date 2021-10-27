@@ -1,7 +1,9 @@
 header {
   @include flex-center;
   min-height: 7rem;
+
   // NAV ITEM
+
   nav {
     display: none;
   }
@@ -64,18 +66,20 @@ header {
 // MEDIA QUERY FOR HEADER
 @media screen and (min-width: 1024px) {
   header {
-    border-bottom: 1px solid $Black;
-    margin-bottom: 1rem;
-    min-height: 8rem;
+    min-height: 9rem;
+    position: relative;
+    border-bottom: 1px solid $Grayish-blue;
+
     nav {
       @include flex-center;
+      margin-left: 4.6rem;
       ul {
         @include flex-center;
         align-items: flex-start;
       }
 
       li {
-        margin-left: 2rem;
+        margin-left: 3rem;
 
         a {
           color: $Black;
