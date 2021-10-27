@@ -70,3 +70,11 @@ nextBtn.addEventListener("click", () => {
 
   beginSlide();
 });
+
+thumbnailImages.forEach((img, index) => {
+  img.addEventListener("click", (e) => {
+    resetSlide();
+    current = index;
+    productImages[current].style.display = "block";
+  });
+});

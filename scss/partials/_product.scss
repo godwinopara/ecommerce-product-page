@@ -159,28 +159,29 @@
   .product {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 10rem;
-    max-width: 1000px;
-    padding: 7rem 3.3rem;
+    column-gap: 11.8rem;
+    max-width: 1016px;
+    padding: 7rem 4.8rem;
     margin: auto;
 
     .image__wrapper {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       img {
         width: 100%;
         border-radius: 1rem;
-        height: 40rem;
+        min-height: 40.46rem;
       }
     }
 
     &__image__thumbnail {
       display: flex;
-
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       img {
-        height: 10rem;
-        width: 20rem;
         cursor: pointer;
         border-radius: 1rem;
+        width: 23%;
       }
 
       img:not(:last-child) {
