@@ -121,11 +121,11 @@ function updateCart(totalQuantity, total) {
         <p>Autumn Limited Edition..</p>
         <span>$125.00</span>
         <span>&times;</span>
-        <span>${totalQuantity}</span>
+        <span class="quantity">${totalQuantity}</span>
         <span>$${total}</span>
       </div>
-      <div onClick="deleteItem()" class="delete-icon">
-        <img src="/images/icon-delete.svg" alt="" />
+      <div class="delete-icon">
+        <img onClick="deleteItem()" src="/images/icon-delete.svg" alt="" />
       </div>
     </div>
 </div>
@@ -137,11 +137,12 @@ function updateCart(totalQuantity, total) {
   return cartUpdate;
 }
 
+const cartContainer = document.querySelector(".cart__item__container");
+
 function addToCart() {
   const addToCartBtn = document.querySelector(".btn__add__to__cart");
   addToCartBtn.addEventListener("click", (e) => {
     const getProductQuantity = document.querySelector(".quantity").innerHTML;
-    const cartContainer = document.querySelector(".cart__item__container");
     const totalCost = (Number(getProductQuantity) * 125).toString();
     cartContainer.innerHTML = updateCart(getProductQuantity, totalCost);
   });
@@ -149,30 +150,24 @@ function addToCart() {
 
 addToCart();
 
-const getProductQuantity = document.querySelector(".quantity").innerHTML;
 function deleteItem() {
-  if (Number(getProductQuantity) > 1) {
-    // let newQuantity = Number(getProductQuantity) - 1;
-    getProductQuantity.innerHTML = Number(getProductQuantity) - 1;
-    console.log(getProductQuantity);
+  //
+  let productQuantityOnCart = document.querySelector(".item__name .quantity");
+  let productQuantityonPage = document.querySelector(
+    ".product__quantity .quantity"
+  );
+  //
+  let convertToNumber = Number(productQuantityOnCart.innerText);
+  let convertToString;
+  //
+  if (convertToNumber > 1) {
+    convertToNumber -= 1;
+    convertToString = convertToNumber.toString();
+    //
+    productQuantityOnCart.innerText = convertToString;
+    productQuantityonPage.innerText = convertToString;
+    //
+  } else if (convertToNumber === 1) {
+    cartContainer.innerHTML = `<p>Your cart is empty</p>`;
   }
 }
-
-//  <div class="cart__item__details">
-//                 <div class="item__details">
-//
-//                   <div class="item__name">
-//                     <p>Autumn Limited Edition..</p>
-//                     <span>$125.00</span>
-//                     <span>&times;</span>
-//                     <span>3</span>
-//                     <span>$375.00</span>
-//                   </div>
-//                   <div class="delete-icon">
-//                     <img src="/images/icon-delete.svg" alt="" />
-//                   </div>
-//                 </div>
-//               </div>
-//               <div class="checkout-btn">
-//                 <button>Checkout</button>
-//               </div>
