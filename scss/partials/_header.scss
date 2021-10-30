@@ -96,6 +96,13 @@ header {
         height: 70%;
       }
 
+      .cart__item__container {
+        @include flex-center;
+        align-items: stretch;
+        flex-direction: column;
+        height: 70%;
+      }
+
       .cart__item__details {
         margin: 2.5rem auto;
 

@@ -51,29 +51,9 @@
           <img class="cart-icon" src="/images/icon-cart.svg" alt="cart" />
           <div class="cart__items">
             <h2>Cart</h2>
-            <!-- <p class="empty-cart">Your cart is empty</p> -->
-            <div class="cart__item__details">
-              <div class="item__details">
-                <img
-                  class="item__img"
-                  src="/images/image-product-1-thumbnail.jpg"
-                  alt=""
-                />
-                <div class="item__name">
-                  <p>Autumn Limited Edition..</p>
-                  <span>$125.00</span>
-                  <span>&times;</span>
-                  <span>3</span>
-                  <span>$375.00</span>
-                </div>
-                <div class="delete-icon">
-                  <img src="/images/icon-delete.svg" alt="" />
-                </div>
-              </div>
-            </div>
-            <div class="checkout-btn">
-              <button>Checkout</button>
-            </div>
+
+            <!-- CART CONTAINER -->
+            <div class="cart__item__container"></div>
           </div>
         </div>
         <img
@@ -107,7 +87,11 @@
           </div>
 
           <div class="product__image__thumbnail">
-            <img src="/images/image-product-1-thumbnail.jpg" alt="" />
+            <img
+              id="cart-img"
+              src="/images/image-product-1-thumbnail.jpg"
+              alt=""
+            />
             <img src="/images/image-product-2-thumbnail.jpg" alt="" />
             <img src="/images/image-product-3-thumbnail.jpg" alt="" />
             <img src="/images/image-product-4-thumbnail.jpg" alt="" />
@@ -129,11 +113,15 @@
           </div>
           <div class="cart">
             <div class="product__quantity">
-              <button><img src="/images/icon-minus.svg" alt="" /></button>
-              <button>0</button>
-              <button><img src="/images/icon-plus.svg" alt="" /></button>
+              <button class="minus-btn">
+                <img src="/images/icon-minus.svg" alt="" />
+              </button>
+              <button class="quantity">1</button>
+              <button class="plus-btn">
+                <img src="/images/icon-plus.svg" alt="" />
+              </button>
             </div>
-            <button class="btn__add__to__cart">
+            <button data-cart-img="cart-img" class="btn__add__to__cart">
               <span class="cart_img"></span>Add to cart
             </button>
           </div>
