@@ -29,6 +29,10 @@ header {
         color: $Black;
         font-weight: 700;
       }
+
+      a:hover {
+        color: $Very-dark-blue;
+      }
     }
   }
 
@@ -59,12 +63,12 @@ header {
       height: 3rem;
       width: 3rem;
       margin-left: 2rem;
+      border-radius: 100%;
     }
 
-    // CART
-    // .cart__wrapper {
-    //   position: relative;
-    // }
+    .profile-img:hover {
+      border: 0.2rem solid $Orange;
+    }
 
     .cart__items {
       position: absolute;
@@ -76,10 +80,11 @@ header {
       width: 92%;
       margin: auto;
       background-color: $White;
-      border-radius: 12px;
-      box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.75);
-      -webkit-box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.75);
+      border-radius: 8px;
+      box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.45);
+      -webkit-box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.45);
+      -moz-box-shadow: 1px 4px 8px -2px rgba(0, 0, 0, 0.45);
+      display: none;
 
       h2 {
         border-bottom: 1px solid $Grayish-blue;
@@ -140,6 +145,22 @@ header {
         }
       }
     }
+
+    .show-cart {
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    .user_profile {
+      .cart__items {
+        width: 60%;
+        top: -32%;
+        right: -35%;
+      }
+    }
   }
 }
 
@@ -164,10 +185,23 @@ header {
         a {
           color: $Black;
         }
+
+        a:hover {
+          color: $Very-dark-blue;
+        }
       }
     }
     .hamburger {
       display: none;
+    }
+
+    .user_profile {
+      .cart__items {
+        width: 35%;
+        top: 200%;
+        bottom: -190%;
+        right: -60%;
+      }
     }
   }
 }

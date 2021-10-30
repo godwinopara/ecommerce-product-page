@@ -2,9 +2,15 @@
   // PRODUCT IMAGES
   .image__wrapper {
     position: relative;
+
+    // HIDE ALL THE PRODUCT IMAGE SO THE USER CAN
+    // SHOW A SINGLE IMAGE BY THE CLICKING NEXT OR PREVIOUS BUTTON
     img {
       display: none;
     }
+
+    // DISPLAYS THE A SINGLE IMAGE WHEN THE USER CLICKS ON PREVIOUS
+    // OR NEXT BUTTON
 
     .show-image {
       display: block;

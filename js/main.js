@@ -17,6 +17,15 @@ hamburgerCloseIcon.addEventListener("click", () => {
   document.documentElement.style.overflowY = "scroll";
 });
 
+// Cart
+
+const cartIcon = document.querySelector(".cart-icon");
+const cartItems = document.querySelector(".cart__items");
+
+cartIcon.addEventListener("click", () => {
+  cartItems.classList.toggle("show-cart");
+});
+
 // IMAGE SLIDER
 
 const productImages = document.querySelectorAll(".image__wrapper img");
