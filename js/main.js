@@ -27,31 +27,44 @@ const thumbnailImages = document.querySelectorAll(
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
+// model
+const closeModelIcon = document.querySelector(".close-model");
+const model = document.querySelector(".product__samples__model");
+const modelImage = document.querySelectorAll(
+  ".product__samples__images__wrapper img"
+);
+const modelImageThumbnail = document.querySelectorAll(
+  ".product__samples__thumbnail img"
+);
+
+const modelPrevBtn = document.querySelector(".model__prev");
+const modelNextBtn = document.querySelector(".model__next");
+
 let current = 0;
 
 // HIDE ALL THE IMAGES
-const resetSlide = () => {
-  productImages.forEach((img) => {
+const resetSlide = (imageContainer) => {
+  imageContainer.forEach((img) => {
     img.style.display = "none";
   });
 };
 
 // DISPLAY THE FIRST IMAGE AND HIDE THE REST
 const beginSlide = () => {
-  resetSlide();
+  resetSlide(productImages);
   productImages[current].style.display = "block";
 };
 
 // SHOW PREVIOUS IMAGE
 const slideLeft = () => {
-  resetSlide();
+  resetSlide(productImages);
   productImages[current - 1].style.display = "block";
   current--;
 };
 
 // SHOW NEXT IMAGE
 const slideRight = () => {
-  resetSlide();
+  resetSlide(productImages);
   productImages[current + 1].style.display = "block";
   current++;
 };
@@ -74,10 +87,47 @@ nextBtn.addEventListener("click", () => {
 
 thumbnailImages.forEach((img, index) => {
   img.addEventListener("click", (e) => {
-    resetSlide();
+    resetSlide(productImages);
+    resetSlide(modelImage);
+    model.style.display = "flex";
     current = index;
     productImages[current].style.display = "block";
+    modelImage[current].style.display = "block";
   });
+});
+
+/* ********************************************
+ **********************************************
+ ***************** MODEL ********************* */
+
+closeModelIcon.addEventListener("click", () => {
+  model.style.display = "none";
+});
+
+modelImageThumbnail.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    resetSlide(modelImage);
+    current = index;
+    modelImage[current].style.display = "block";
+  });
+});
+
+modelPrevBtn.addEventListener("click", () => {
+  resetSlide(modelImage);
+  if (current === 0) {
+    current = modelImage.length;
+  }
+  modelImage[current - 1].style.display = "block";
+  current--;
+});
+
+modelNextBtn.addEventListener("click", () => {
+  resetSlide(modelImage);
+  if (current === modelImage.length - 1) {
+    current = -1;
+  }
+  modelImage[current + 1].style.display = "block";
+  current++;
 });
 
 // CART ITEMS
@@ -214,9 +264,14 @@ function deleteItem() {
     itemOnCartTotal.innerText = `$${updateCartTotalAmount(
       productQuantityonCartNumber
     )}`;
+
+    /* *******************************************************
+     ***********************************************************/
     // UPDATE TOOLTIP
     updateTooltip(convertToString(productQuantityonCartNumber), "visible");
-    //
+
+    /* **********************************************************
+     ***********************************************************/
   } else if (productQuantityonCartNumber === 1) {
     cartContainer.innerHTML = `<p>Your cart is empty</p>`;
     updateTooltip(convertToString, "hidden");
