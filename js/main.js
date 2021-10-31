@@ -18,6 +18,10 @@ hamburgerCloseIcon.addEventListener("click", () => {
   document.documentElement.style.overflowY = "scroll";
 });
 
+/* ***************************************************
+ ******************************************************
+ *******************************************************/
+
 // IMAGE SLIDER
 
 const productImages = document.querySelectorAll(".image__wrapper img");
@@ -27,7 +31,8 @@ const thumbnailImages = document.querySelectorAll(
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
-// model
+// MODEL ELEMENTS
+
 const closeModelIcon = document.querySelector(".close-model");
 const model = document.querySelector(".product__samples__model");
 const modelImage = document.querySelectorAll(
@@ -88,11 +93,8 @@ nextBtn.addEventListener("click", () => {
 thumbnailImages.forEach((img, index) => {
   img.addEventListener("click", (e) => {
     resetSlide(productImages);
-    resetSlide(modelImage);
-    model.style.display = "flex";
     current = index;
     productImages[current].style.display = "block";
-    modelImage[current].style.display = "block";
   });
 });
 
@@ -102,6 +104,14 @@ thumbnailImages.forEach((img, index) => {
 
 closeModelIcon.addEventListener("click", () => {
   model.style.display = "none";
+});
+
+productImages.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    model.style.display = "flex";
+    resetSlide(modelImage);
+    modelImage[index].style.display = "block";
+  });
 });
 
 modelImageThumbnail.forEach((img, index) => {
@@ -129,6 +139,10 @@ modelNextBtn.addEventListener("click", () => {
   modelImage[current + 1].style.display = "block";
   current++;
 });
+
+/* ************************************************************
+ *****************************************************************
+ **************************************************************** */
 
 // CART ITEMS
 

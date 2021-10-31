@@ -206,6 +206,7 @@ header {
 
       li {
         margin-left: 3rem;
+        position: relative;
 
         a {
           color: $Black;
@@ -214,6 +215,21 @@ header {
         a:hover {
           color: $Very-dark-blue;
         }
+      }
+
+      li::before {
+        content: "";
+        position: absolute;
+        top: 5.4rem;
+        width: 100%;
+        height: 4px;
+        border-radius: 20px;
+        background: $Orange;
+        visibility: hidden;
+      }
+
+      li:hover::before {
+        visibility: visible;
       }
     }
     .hamburger {
