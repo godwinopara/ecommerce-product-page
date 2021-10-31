@@ -48,7 +48,12 @@
       </nav>
       <div class="user_profile">
         <div class="cart__wrapper">
-          <img class="cart-icon" src="/images/icon-cart.svg" alt="cart" />
+          <!-- CART ICON -->
+          <div class="cart__icon__wrapper">
+            <img class="cart-icon" src="/images/icon-cart.svg" alt="cart" />
+            <span class="product__quantity__tooltip show-tooltip">0</span>
+          </div>
+          <!-- ----------- -->
           <div class="cart__items">
             <h2>Cart</h2>
 
@@ -58,6 +63,7 @@
             </div>
           </div>
         </div>
+        <!-- PROFILE IMAGE -->
         <img
           class="profile-img"
           src="/images/image-avatar.png"

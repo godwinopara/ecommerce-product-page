@@ -59,6 +59,24 @@ header {
     img {
       cursor: pointer;
     }
+
+    .cart__icon__wrapper {
+      position: relative;
+
+      .product__quantity__tooltip {
+        position: absolute;
+        top: -35%;
+        right: -30%;
+        padding: 0.01rem 0.5rem;
+        border-radius: 100%;
+        font-size: 1.1rem;
+        background-color: $Orange;
+        color: $White;
+        font-weight: 700;
+        visibility: hidden;
+      }
+    }
+
     .profile-img {
       height: 3rem;
       width: 3rem;

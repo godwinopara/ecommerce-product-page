@@ -1,4 +1,5 @@
 // NAV MENU
+
 const hamburger = document.querySelector(".hamburger-open");
 const hamburgerCloseIcon = document.querySelector(".hamburger-close");
 const nav = document.querySelector("nav");
@@ -15,15 +16,6 @@ hamburgerCloseIcon.addEventListener("click", () => {
   hamburger.classList.add("show-nav");
   nav.classList.remove("show-nav");
   document.documentElement.style.overflowY = "scroll";
-});
-
-// Cart
-
-const cartIcon = document.querySelector(".cart-icon");
-const cartItems = document.querySelector(".cart__items");
-
-cartIcon.addEventListener("click", () => {
-  cartItems.classList.toggle("show-cart");
 });
 
 // IMAGE SLIDER
@@ -88,13 +80,25 @@ thumbnailImages.forEach((img, index) => {
   });
 });
 
-// increase or decrease the total pieces of the product the user wants
+// CART ITEMS
+
+const cartIcon = document.querySelector(".cart-icon");
+const cartItems = document.querySelector(".cart__items");
+const cartContainer = document.querySelector(".cart__item__container");
+
+const productQuantity = document.querySelector(".quantity");
+const increaseQuantity = document.querySelector(".plus-btn");
+const decreaseQuantity = document.querySelector(".minus-btn");
+
+// TOOGLE TO DISPLAY THE CART OR NOT
+
+cartIcon.addEventListener("click", () => {
+  cartItems.classList.toggle("show-cart");
+});
+
+// increase or decrease the total number of the product the user wants
 
 function updateProductQuantity() {
-  const productQuantity = document.querySelector(".quantity");
-  const increaseQuantity = document.querySelector(".plus-btn");
-  const decreaseQuantity = document.querySelector(".minus-btn");
-
   increaseQuantity.addEventListener("click", () => {
     productQuantity.innerHTML = `${Number(productQuantity.innerHTML) + 1}`;
   });
@@ -107,7 +111,9 @@ function updateProductQuantity() {
 
 updateProductQuantity();
 
-function updateCart(totalQuantity, total) {
+// ADDES THE ITEM THE USER SELECTED TO THE CART
+
+function updateCart(totalQuantity, totalCost) {
   const cartUpdate = `
 
  <div class="cart__item__details">
@@ -122,7 +128,7 @@ function updateCart(totalQuantity, total) {
         <span>$125.00</span>
         <span>&times;</span>
         <span class="quantity">${totalQuantity}</span>
-        <span>$${total}</span>
+        <span class="total">$${totalCost}</span>
       </div>
       <div class="delete-icon">
         <img onClick="deleteItem()" src="/images/icon-delete.svg" alt="" />
@@ -133,41 +139,100 @@ function updateCart(totalQuantity, total) {
   <button>Checkout</button>
 </div>
   `;
-
+  cartContainer.innerHTML = cartUpdate;
   return cartUpdate;
 }
-
-const cartContainer = document.querySelector(".cart__item__container");
 
 function addToCart() {
   const addToCartBtn = document.querySelector(".btn__add__to__cart");
   addToCartBtn.addEventListener("click", (e) => {
-    const getProductQuantity = document.querySelector(".quantity").innerHTML;
-    const totalCost = (Number(getProductQuantity) * 125).toString();
-    cartContainer.innerHTML = updateCart(getProductQuantity, totalCost);
+    addItem();
+    updateTooltip(addItem(), "visible");
   });
 }
 
 addToCart();
 
+/* *********************************************
+ ***********************************************
+ UPDATE CART ICON TOOLTIP THAT DISPLAY THE TOTAL QUANTITY OF 
+ ITEM THE USER HAS ADDED TO THE CART
+ *******************************************
+ ************************************************** */
+
+function updateTooltip(productQuantity, visibility) {
+  const productQuantityTootip = document.querySelector(
+    ".product__quantity__tooltip "
+  );
+  productQuantityTootip.innerText = Number(productQuantity).toString();
+  productQuantityTootip.style.visibility = visibility;
+}
+
+/* ******************************************************
+ ***************************************************** */
+
+function addItem() {
+  const totalItemInCart = Number(productQuantity.innerHTML);
+  const totalCost = updateCartTotalAmount(totalItemInCart);
+  updateCart(totalItemInCart, totalCost);
+  return totalItemInCart;
+}
+
+/* ************************************************************
+ ****************************************************************** */
+
 function deleteItem() {
-  //
   let productQuantityOnCart = document.querySelector(".item__name .quantity");
+  let itemOnCartTotal = document.querySelector(".item__name .total");
+
+  // GET THE PRODUCT QUANTITY ON THE PRODUCT DETAILS PAGE SO WHEN THE USER
+  // REDUCES THE QUANTITY FROM THE CART IT ALSO REDUCES THE QUANTITY ON
+  // THE PRODUCT DETAILS PAGE ALSO
+
   let productQuantityonPage = document.querySelector(
     ".product__quantity .quantity"
   );
   //
-  let convertToNumber = Number(productQuantityOnCart.innerText);
-  let convertToString;
+
+  // CONVERT THE PRODUCT QUANTITY TO NUMBER
+  let productQuantityonCartNumber = convertToNumber(
+    productQuantityOnCart.innerText
+  );
+
   //
-  if (convertToNumber > 1) {
-    convertToNumber -= 1;
-    convertToString = convertToNumber.toString();
+  if (productQuantityonCartNumber > 1) {
+    productQuantityonCartNumber -= 1;
+
     //
-    productQuantityOnCart.innerText = convertToString;
-    productQuantityonPage.innerText = convertToString;
+    productQuantityOnCart.innerText = convertToString(
+      productQuantityonCartNumber
+    );
+
+    productQuantityonPage.innerText = convertToString(
+      productQuantityonCartNumber
+    );
+    itemOnCartTotal.innerText = `$${updateCartTotalAmount(
+      productQuantityonCartNumber
+    )}`;
+    // UPDATE TOOLTIP
+    updateTooltip(convertToString(productQuantityonCartNumber), "visible");
     //
-  } else if (convertToNumber === 1) {
+  } else if (productQuantityonCartNumber === 1) {
     cartContainer.innerHTML = `<p>Your cart is empty</p>`;
+    updateTooltip(convertToString, "hidden");
   }
+}
+
+function updateCartTotalAmount(productQuantity) {
+  const productPrice = 125;
+  const totalAmount = productPrice * productQuantity;
+  return convertToString(totalAmount);
+}
+
+function convertToNumber(string) {
+  return Number(string);
+}
+
+function convertToString(number) {
+  return number.toString();
 }
